@@ -36,8 +36,8 @@ export const ContactForm = ({
         name='phone'
         value={phone}
         onChange={handlePhone}
-        pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
-        placeholder='Phone number: ###-###-####'
+        pattern='[1-9]{4}-[0-9]{4}'
+        placeholder='Phone number: ####-####'
       />
       <input
         type='email'

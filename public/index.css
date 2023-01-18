@@ -73,10 +73,18 @@ select {
   margin-bottom: 4px;
 }
 
-.tile.tile-title {
+.tile-title {
   font-weight: bold;
+  
 }
 
 .tile-container {
   margin-bottom: 20px;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid black;
+  display: flex;
+  border-radius: 4px;
+  flex-direction: column;
+  box-sizing: border-box;
 }
