@@ -69,7 +69,7 @@ export const ContactsPage = (props) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList tiles={props.contacts} />
+        <TileList object={props.contacts} />
       </section>
     </div>
   );
