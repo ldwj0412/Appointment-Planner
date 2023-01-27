@@ -12,18 +12,26 @@ export const AppointmentsPage = (props) => {
   const [currentContact, setCurrentContact] = useState('');
   const [currentDate, setCurrentDate] = useState('');
   const [currentTime, setCurrentTime] = useState('');
+  const [id,setId] = useState('');
 
+
+
+  const removeItem = (idToRemove) => {
+    props.setAppointments(prev => (prev.filter(item => item.id !== idToRemove)));
+    
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     /*
     Add contact info and clear data  
     */
-    props.addAppointments(currentTitle,currentContact,currentDate,currentTime);
+    props.addAppointments(currentTitle,currentContact,currentDate,currentTime,Date.now());
     setCurrentTitle('');
     setCurrentContact('');
     setCurrentDate('');
     setCurrentTime('');
+    setId('');
    
   };
 
@@ -48,7 +56,7 @@ export const AppointmentsPage = (props) => {
       <hr />
       <section>
         <h2>Appointments</h2>
-        {<TileList object={props.appointments} />}
+        {<TileList object={props.appointments} removeItem={removeItem} />}
       </section>
     </div>
   );

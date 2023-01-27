@@ -23,17 +23,17 @@ function App() {
   contacts and appointments
   */
 
-  const addContact= (name, phone, email )=>{
+  const addContact= (name, phone, email, id )=>{
 
     setContacts(pre => {
-      return [...pre, {name,phone, email}];
+      return [...pre, {name,phone, email,id}];
     });
 
   };
 
-    const addAppointments = (title, contact, date, time) => {
+    const addAppointments = (title, contact, date, time,id) => {
       setAppointments( pre => {
-        return [...pre, {title, contact, date, time}];
+        return [...pre, {title, contact, date, time,id}];
       });
     };
 
@@ -55,11 +55,11 @@ function App() {
           </Route>
           <Route path={ROUTES.CONTACTS}>
              {/* Add props to ContactsPage */}
-            <ContactsPage contacts={contacts} addContact = {addContact} />
+            <ContactsPage contacts={contacts} addContact = {addContact} setContacts={setContacts} />
           </Route>
           <Route path={ROUTES.APPOINTMENTS}>
             {/* Add props to AppointmentsPage */}
-            <AppointmentsPage appointments={appointments} contacts={contacts} addAppointments={addAppointments} />
+            <AppointmentsPage appointments={appointments} contacts={contacts} addAppointments={addAppointments} setAppointments={setAppointments} />
           </Route>
         </Switch>
       </main>

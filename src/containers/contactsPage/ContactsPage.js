@@ -12,6 +12,7 @@ export const ContactsPage = (props) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [id,setId] = useState('');
   const [duplicate, isDuplicate] = useState(false);
 
   const handleSubmit = (e) => {
@@ -22,10 +23,11 @@ export const ContactsPage = (props) => {
     */
 
     if(!duplicate){
-      props.addContact(name,phone, email);
+      props.addContact(name,phone, email,Date.now());
       setName('');
       setPhone('');
       setEmail('');
+      setId('');
     }else{
       alert(`Contact ${name} already exists`);
     }
@@ -42,6 +44,11 @@ export const ContactsPage = (props) => {
     return arr.some(ele => ele.name === contact);
 
   }
+
+  const removeItem = (idToRemove) => {
+    props.setContacts(prev => (prev.filter(item => item.id !== idToRemove)));
+    
+  };
 
   useEffect(() => {
     if (contactExists(props.contacts, name)) {
@@ -69,7 +76,7 @@ export const ContactsPage = (props) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList object={props.contacts} />
+        <TileList object={props.contacts} removeItem={removeItem} />
       </section>
     </div>
   );
